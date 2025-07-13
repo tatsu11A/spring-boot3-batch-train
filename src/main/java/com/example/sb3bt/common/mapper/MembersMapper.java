@@ -16,7 +16,7 @@ public interface MembersMapper {
      *
      * @param member 登録する会員情報
      */
-    @Insert("INSERT INTO members(contract_id, member_id, product_id, card_number, registration_date) " +
+    @Insert("INSERT INTO member_registration(contract_id, member_id, product_id, card_number, registration_date) " +
             "VALUES(#{contractId}, #{memberId}, #{productId}, #{cardNumber}, #{registrationDate})")
     void insert(Members member);
 
@@ -27,7 +27,7 @@ public interface MembersMapper {
      */
     @Insert({
         "<script>",
-        "INSERT INTO members(contract_id, member_id, product_id, card_number, registration_date) VALUES ",
+        "INSERT INTO member_registration(contract_id, member_id, product_id, card_number, registration_date) VALUES ",
         "<foreach collection='list' item='m' separator=','>",
         "(#{m.contractId}, #{m.memberId}, #{m.productId}, #{m.cardNumber}, #{m.registrationDate})",
         "</foreach>",
@@ -38,6 +38,6 @@ public interface MembersMapper {
     /**
      * membersテーブルを全件削除するSQL。
      */
-    @Delete("TRUNCATE TABLE members")
+    @Delete("TRUNCATE TABLE member_registration")
     void truncate();
 }
