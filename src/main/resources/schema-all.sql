@@ -7,3 +7,11 @@ CREATE TABLE USERS (
   CREATED_AT DATE,
   PRIMARY KEY (ID)
 );
+
+CREATE TABLE members (
+  contract_id BIGINT PRIMARY KEY,
+  member_id BIGINT,
+  product_id BIGINT,
+  card_number VARCHAR(20),
+  registration_date DATE
+);
