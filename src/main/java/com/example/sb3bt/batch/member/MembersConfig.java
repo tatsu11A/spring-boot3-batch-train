@@ -1,5 +1,6 @@
-package main.java.com.example.sb3bt.batch.member;
+package com.example.sb3bt.batch.member;
 
+import com.example.sb3bt.batch.member.MembersProcessor;
 import com.example.sb3bt.common.entity.Members;
 import com.example.sb3bt.common.mapper.MembersMapper;
 import com.example.sb3bt.core.exception.CustomSkipPolicy;
@@ -36,7 +37,7 @@ public class MembersConfig {
     private final MembersWriter membersWriter;
     private final MembersMapper membersMapper;
 
-    @Bean
+    @Bean(name = "membersReader")
     public FlatFileItemReader<MembersItem> reader() {
         FlatFileItemReader<MembersItem> reader = new FlatFileItemReader<>();
         reader.setLinesToSkip(1);
@@ -65,14 +66,14 @@ public class MembersConfig {
     @Bean
     public Job importMembersJob() {
         return new JobBuilder("importMembersJob", jobRepository)
-                .start(step1Truncate())
-                .next(step2ImportCsv())
+                .start(importMembersStep1())
+                .next(importMembersStep2())
                 .listener(logJobListener)
                 .build();
     }
 
     @Bean
-    public Step step1Truncate() {
+    public Step importMembersStep1() {
         return new StepBuilder("importMembersStep1", jobRepository)
                 .tasklet(truncateTasklet(), platformTransactionManager)
                 .allowStartIfComplete(true)
@@ -80,7 +81,7 @@ public class MembersConfig {
     }
 
     @Bean
-    public Step step2ImportCsv() {
+    public Step importMembersStep2() {
         return new StepBuilder("importMembersStep2", jobRepository)
                 .<MembersItem, Members>chunk(10, platformTransactionManager)
                 .reader(reader())

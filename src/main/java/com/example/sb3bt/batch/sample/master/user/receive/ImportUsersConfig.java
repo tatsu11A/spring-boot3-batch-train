@@ -41,7 +41,7 @@ public class ImportUsersConfig {
     /**
      * CSVファイルから1行ずつ読み込むリーダー
      */
-    @Bean
+    @Bean(name = "importUsersReader")
     public FlatFileItemReader<ImportUsersItem> reader() {
         FlatFileItemReader<ImportUsersItem> reader = new FlatFileItemReader<>();
 

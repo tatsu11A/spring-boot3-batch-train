@@ -1,10 +1,14 @@
 package com.example.sb3bt.batch.member;
 
+import com.example.sb3bt.batch.member.MembersItem;
 import com.example.sb3bt.common.entity.Members;
+
 import org.springframework.batch.item.ItemProcessor;
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDate;
 
-
+@Component
 public class MembersProcessor implements ItemProcessor<MembersItem, Members> {
 
     @Override

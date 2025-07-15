@@ -1,4 +1,4 @@
-package main.java.com.example.sb3bt.common.mapper;
+package com.example.sb3bt.common.mapper;
 
 import java.util.List;
 

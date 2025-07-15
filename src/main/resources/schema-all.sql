@@ -8,10 +8,12 @@ CREATE TABLE USERS (
   PRIMARY KEY (ID)
 );
 
-CREATE TABLE members (
-  contract_id BIGINT PRIMARY KEY,
-  member_id BIGINT,
-  product_id BIGINT,
-  card_number VARCHAR(20),
-  registration_date DATE
+DROP TABLE IF EXISTS member_registration;
+
+CREATE TABLE member_registration (
+    contract_id VARCHAR(100),
+    member_id VARCHAR(100),
+    product_id VARCHAR(100),
+    card_number VARCHAR(100),
+    registration_date DATE
 );

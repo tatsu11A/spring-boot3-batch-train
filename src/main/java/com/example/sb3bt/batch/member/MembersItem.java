@@ -1,4 +1,4 @@
-package main.java.com.example.sb3bt.batch.member;
+package com.example.sb3bt.batch.member;
 
 import lombok.Data;
 
