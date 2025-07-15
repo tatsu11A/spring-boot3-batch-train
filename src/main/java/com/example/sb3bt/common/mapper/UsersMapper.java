@@ -35,7 +35,7 @@ public interface UsersMapper {
         "</foreach>",
         "</script>" // 動的SQLの終了
     })
-    void bulkinsert(List<? extends Users> list);
+    void bulkInsert(List<? extends Users> list);
 
     /**
      * usersテーブルのデータを全て削除するSQL。

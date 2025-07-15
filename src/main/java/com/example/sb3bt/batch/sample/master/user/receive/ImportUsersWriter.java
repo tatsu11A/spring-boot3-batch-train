@@ -29,7 +29,7 @@ public class ImportUsersWriter implements ItemWriter<Users> {
     public void write(@NonNull Chunk<? extends Users> list) throws Exception {
 
         // 一括登録（パフォーマンス重視）
-        usersMapper.bulkinsert(list.getItems());
+        usersMapper.bulkInsert(list.getItems());
 
         // ↓以下は参考例：1件ずつ登録する場合
         // for (Users users: list) {

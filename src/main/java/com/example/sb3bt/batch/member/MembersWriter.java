@@ -1,7 +1,5 @@
 package com.example.sb3bt.batch.member;
 
-import java.util.ArrayList;
-
 import org.springframework.batch.item.Chunk; 
 import org.springframework.batch.item.ItemWriter; 
 import org.springframework.lang.NonNull;
@@ -20,6 +18,7 @@ public class MembersWriter implements ItemWriter<Members> {
 
     @Override
     public void write(@NonNull Chunk<? extends Members> list) throws Exception {
-        membersMapper.bulkInsert(new ArrayList<>(list.getItems()));
+        membersMapper.bulkInsert(list.getItems());
+;
     }
 }

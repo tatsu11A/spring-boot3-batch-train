@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.sb3bt.common.entity.Members;
+import com.example.sb3bt.common.entity.Users;
 
 @Mapper
 public interface MembersMapper {
@@ -33,7 +34,7 @@ public interface MembersMapper {
         "</foreach>",
         "</script>"
     })
-    void bulkInsert(List<Members> list);
+    void bulkInsert(List<? extends Members> list);
 
     /**
      * membersテーブルを全件削除するSQL。
